@@ -17,7 +17,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import '~/assets/css/first.css'
 
 // import ('~/assets/css/second.css	')
@@ -31,6 +31,13 @@ import '~/assets/css/first.css'
 //     }
 //   ]
 // })
+
+
+definePageMeta({
+  middlewares: 'log'
+})
+
+
 
 
 
