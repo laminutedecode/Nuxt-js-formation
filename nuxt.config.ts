@@ -9,8 +9,35 @@ export default defineNuxtConfig({
       tailwindcss(),
     ],
   },
+  runtimeConfig: {
+    apiSecret: '123',
+    public: {
+      apiUrl: process.env.API_URL as string,
+      appName: process.env.APP_NAME as string,
+    },
+    pageTransition: {
+      name: 'page',
+      mode: 'out-in',  // 'out-in' pour une transition fluide entre les pages. Ensuite dans css
+    },
+  },
+  // $production: {
+
+  // },
+  // $development: {
+
+  // },
+  // $env: {
+  //   staging: {
+
+  //   }
+  // }
+
+
+
+
   // app: {
   //   head: {
+  //     title: "MDC",
   //     link: [     
   //       {
   //          rel:"stylesheet",

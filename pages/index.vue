@@ -1,43 +1,42 @@
 <template>
   <div>
-    <h1>Page Home</h1>
+
+    <button @click="startStream" >
+      Démarrer le flux
+    </button>
 
 
-    <!-- <img src="/images/img-01.jpg" alt=""> -->
+    <ul>
+      <li v-for="(msg, index) in messages" :key="index">{{ msg }}</li>
+    </ul>
 
 
-    <!-- <img src="~/assets/images/img-01.jpg" alt=""> -->
-
-    <p class="text-7xl text-red-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, veniam?</p>
-
-    <h2 class="animate__animated animate__bounce">Je suis un titre h2</h2>
-    <h3>Je suis un titre h3</h3>
- 
 
   </div>
 </template>
 
-<script setup lang="ts">
-import '~/assets/css/first.css'
-
-// import ('~/assets/css/second.css	')
-// a ne pas faire
-
-// useHead({
-//   link: [
-//     {
-//        rel:"stylesheet",
-//           href:"https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-//     }
-//   ]
-// })
+<script setup lang="ts"  >
 
 
-definePageMeta({
-  middlewares: 'log'
-})
+const messages = ref<string[]>([])
+
+async function startStream() {
+  const response = await $fetch<ReadableStream>('/api/stream-numbers', {
+    method: 'POST',
+    responseType: 'stream'
+  })
+
+  const reader = response.pipeThrough(new TextDecoderStream()).getReader()
+
+  while (true) {
+    const { value, done } = await reader.read()
+
+    if (done) break
 
 
+    messages.value.push(value.trim())
+  }
+}
 
 
 
@@ -46,11 +45,8 @@ definePageMeta({
 
 <style  scoped>
 
-@import url('~/assets/css/second.css')
+@import url('~/assets/css/second.css');
 
-    /* h2  {
-      color: orange
-    } */
 
 
 </style>

@@ -2,6 +2,12 @@
   <div>
     <h1>Page Contact</h1>
 
+    <h2>{{ appName }}</h2>
+
+    <p>{{ apiUrl }}</p>
+
+  
+
   </div>
 </template>
 
@@ -10,6 +16,13 @@
 import {useHead} from "#app"
 import {useSeoMeta} from "#app"
 
+const config = useRuntimeConfig()
+
+const apiUrl = config.public.apiUrl 
+const appName = config.public.appName
+
+
+
 useHead({
   title: 'Contact',
   meta: [
@@ -17,9 +30,9 @@ useHead({
   ]
 })
 
-definePageMeta({
-  layout: "mylayout"
-})
+// definePageMeta({
+//   layout: "mylayout"
+// })
 
 useSeoMeta({
   title: "contact", 
