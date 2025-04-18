@@ -1,9 +1,9 @@
-import {prisma} from "@/lib/prisma"
-
+import {prisma} from "@/server/lib/prisma"
 
 export default defineEventHandler(async (event) => {
   const id = parseInt(event.context.params!.id)
-  return await prisma.todo.findUnique({
+
+  return await prisma.task.delete({
     where: { id }
   })
 })

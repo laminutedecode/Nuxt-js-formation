@@ -1,10 +1,7 @@
 <template>
   <div>
 
-    <Nav />
-
-    <header>Hello depuis le layout default</header>
-
+  
     <slot />
 
   </div>
@@ -12,6 +9,5 @@
 
 <script>
 
-import Nav from '@/components/Nav.vue';
- 
+
 </script>

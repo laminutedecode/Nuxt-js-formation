@@ -1,47 +1,47 @@
 <template>
   <div>
-    <h1>Page Contact</h1>
+    <!-- <h1>Page Contact</h1>
 
     <h2>{{ appName }}</h2>
 
     <p>{{ apiUrl }}</p>
 
-  
+   -->
 
   </div>
 </template>
 
 <script setup>
 
-import {useHead} from "#app"
-import {useSeoMeta} from "#app"
+// import {useHead} from "#app"
+// import {useSeoMeta} from "#app"
 
-const config = useRuntimeConfig()
+// const config = useRuntimeConfig()
 
-const apiUrl = config.public.apiUrl 
-const appName = config.public.appName
+// const apiUrl = config.public.apiUrl 
+// const appName = config.public.appName
 
 
 
-useHead({
-  title: 'Contact',
-  meta: [
-    {name: 'description', content: 'My amazing site.'}
-  ]
-})
-
-// definePageMeta({
-//   layout: "mylayout"
+// useHead({
+//   title: 'Contact',
+//   meta: [
+//     {name: 'description', content: 'My amazing site.'}
+//   ]
 // })
 
-useSeoMeta({
-  title: "contact", 
-  ogTitle: "contact",
-  description: "contact page",
-  ogDescription: "contact page",
-  ogImage: "/image.png",
-  twitterCard: "summary_large_image"
-})
+// // definePageMeta({
+// //   layout: "mylayout"
+// // })
+
+// useSeoMeta({
+//   title: "contact", 
+//   ogTitle: "contact",
+//   description: "contact page",
+//   ogDescription: "contact page",
+//   ogImage: "/image.png",
+//   twitterCard: "summary_large_image"
+// })
   
 </script>
 

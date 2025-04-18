@@ -1,13 +1,13 @@
-import superjson from "superjson"
+// import superjson from "superjson"
 
-export default defineEventHandler(()=> {
-  const data = {
-    createdAt: new Date(),
+// export default defineEventHandler(()=> {
+//   const data = {
+//     createdAt: new Date(),
 
-    toJSON() {
-      return this
-    }
-  }
+//     toJSON() {
+//       return this
+//     }
+//   }
 
-  return superjson.stringify(data) as unknown as typeof data
-})
+//   return superjson.stringify(data) as unknown as typeof data
+// })

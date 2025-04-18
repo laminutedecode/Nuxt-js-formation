@@ -18,11 +18,11 @@ exports.$Enums = {}
 
 /**
  * Prisma Client JS version: 6.6.0
- * Query Engine version: 06fc58a368dc7be9fbbbe894adf8d445d208c284
+ * Query Engine version: f676762280b54cd07c770017ed3711ddde35f37a
  */
 Prisma.prismaVersion = {
   client: "6.6.0",
-  engine: "06fc58a368dc7be9fbbbe894adf8d445d208c284"
+  engine: "f676762280b54cd07c770017ed3711ddde35f37a"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -111,19 +111,10 @@ Prisma.NullTypes = {
  */
 
 exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
-  ReadUncommitted: 'ReadUncommitted',
-  ReadCommitted: 'ReadCommitted',
-  RepeatableRead: 'RepeatableRead',
   Serializable: 'Serializable'
 });
 
-exports.Prisma.UserScalarFieldEnum = {
-  id: 'id',
-  email: 'email',
-  name: 'name'
-};
-
-exports.Prisma.TodosScalarFieldEnum = {
+exports.Prisma.TaskScalarFieldEnum = {
   id: 'id',
   title: 'title',
   completed: 'completed',
@@ -136,20 +127,9 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
-exports.Prisma.QueryMode = {
-  default: 'default',
-  insensitive: 'insensitive'
-};
-
-exports.Prisma.NullsOrder = {
-  first: 'first',
-  last: 'last'
-};
-
 
 exports.Prisma.ModelName = {
-  User: 'User',
-  Todos: 'Todos'
+  Task: 'Task'
 };
 
 /**

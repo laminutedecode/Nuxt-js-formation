@@ -1,52 +1,47 @@
 <template>
-  <div>
+  <div class="p-6 max-w-2xl mx-auto">
+    <div class="flex justify-between items-center mb-6">
+      <h1 class="text-2xl font-bold">Liste des tâches</h1>
+      <NuxtLink to="/create" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+        + Créer
+      </NuxtLink>
+    </div>
 
-    <button @click="startStream" >
-      Démarrer le flux
-    </button>
-
-
-    <ul>
-      <li v-for="(msg, index) in messages" :key="index">{{ msg }}</li>
+    <ul v-if="todos.length" class="space-y-4">
+      <li v-for="todo in todos" :key="todo.id" class="flex items-center justify-between bg-white shadow rounded p-4">
+        <NuxtLink :to="`/todo/${todo.id}`" class="flex-1 text-lg font-medium hover:underline">
+          {{ todo.title }}
+        </NuxtLink>
+        <div class="flex gap-2">
+          <NuxtLink :to="`/todo/${todo.id}/edit`" class="bg-yellow-400 px-3 py-1 rounded hover:bg-yellow-500">
+            Modifier
+          </NuxtLink>
+          <button @click="deleteTodo(todo.id)" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">
+            Supprimer
+          </button>
+        </div>
+      </li>
     </ul>
 
-
-
+    <p v-else class="text-gray-500">Aucune tâche pour le moment.</p>
   </div>
 </template>
 
-<script setup lang="ts"  >
+<script setup lang="ts">
 
+  import type {Task} from "@/types/task"
 
-const messages = ref<string[]>([])
+  const todos = ref<Task[]>([])
 
-async function startStream() {
-  const response = await $fetch<ReadableStream>('/api/stream-numbers', {
-    method: 'POST',
-    responseType: 'stream'
-  })
-
-  const reader = response.pipeThrough(new TextDecoderStream()).getReader()
-
-  while (true) {
-    const { value, done } = await reader.read()
-
-    if (done) break
-
-
-    messages.value.push(value.trim())
+  const fetchTodos = async ()=> {
+    todos.value = await $fetch<Task[]>('/api/task')
   }
-}
 
+  const deleteTodo = async(id: number) => {
+    await $fetch(`/api/task/${id}`,{ method: "DELETE"})
+    fetchTodos()
+  }
 
-
+  onMounted(fetchTodos)
 
 </script>
-
-<style  scoped>
-
-@import url('~/assets/css/second.css');
-
-
-
-</style>

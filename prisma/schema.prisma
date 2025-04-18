@@ -6,27 +6,17 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../lib/generated/prisma"
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
-
-model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
-}
-
-
-model Todos {
+model Task {
   id Int @id @default(autoincrement())
   title String
   completed Boolean @default(false)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
-

@@ -2,27 +2,27 @@
   <div>
     <h1>Page single</h1>
 
-    <button @click="goToContact">Aller page contact</button>
+    <!-- <button @click="goToContact">Aller page contact</button> -->
 
   </div>
 </template>
 
 <script setup >
 
-const route = useRoute()
-const router = useRouter()
+// const route = useRoute()
+// const router = useRouter()
 
-console.log(route.params.id)
+// console.log(route.params.id)
 
-function goToContact(){
-  router.back()
-}
+// function goToContact(){
+//   router.back()
+// }
 
-definePageMeta({
-  validate: async (route)=> {
-    return typeof route.params.id === "string" && /\d/.test(route.params.id)
-  }
-})
+// definePageMeta({
+//   validate: async (route)=> {
+//     return typeof route.params.id === "string" && /\d/.test(route.params.id)
+//   }
+// })
 
 
   

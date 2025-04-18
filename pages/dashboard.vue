@@ -9,11 +9,11 @@
 <script setup>
 
 
-definePageMeta({
-  middleware: ()=> {
-    console.log('Middleware inline executé')
-  }
-})
+// definePageMeta({
+//   middleware: ()=> {
+//     console.log('Middleware inline executé')
+//   }
+// })
 
 
 
