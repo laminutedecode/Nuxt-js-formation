@@ -7,6 +7,12 @@
       </NuxtLink>
     </div>
 
+
+    <!-- <SetCookieComponent/>
+    <GetCookieComponent/>
+    <DeleteCookieComponent/> -->
+    <UseCookieComponent/>
+
     <ul v-if="todos.length" class="space-y-4">
       <li v-for="todo in todos" :key="todo.id" class="flex items-center justify-between bg-white shadow rounded p-4">
         <NuxtLink :to="`/todo/${todo.id}`" class="flex-1 text-lg font-medium hover:underline">
@@ -30,6 +36,10 @@
 <script setup lang="ts">
 
   import type {Task} from "@/types/task"
+  import SetCookieComponent from "@/components/SetCookieComponent.vue"
+  import GetCookieComponent from "@/components/GetCookieComponent.vue"
+  import DeleteCookieComponent from "@/components/DeleteCookieComponent.vue"
+  import UseCookieComponent from "@/components/UseCookieComponent.vue"
 
   const todos = ref<Task[]>([])
 
